@@ -100,10 +100,24 @@ KATEGORI_INFO = {
     },
     "Tidak Sehat": {
         "warna": "#E5B93D", "warna_bg": "#FEF3C7", "emoji": "😷",
-        "rentang": "> 100",
+        "rentang": "101-200",
         "deskripsi": "Kurangi aktivitas luar ruangan, terutama bagi kelompok sensitif.",
         "rekom_emoji": "⚠️",
         "rekomendasi": "Kurangi aktivitas luar ruangan dalam waktu lama. Disarankan menggunakan masker terutama bagi anak-anak, lansia, dan penderita gangguan pernapasan."
+    },
+    "Sangat Tidak Sehat": {
+        "warna": "#EF4444", "warna_bg": "#FEE2E2", "emoji": "🤢",
+        "rentang": "201-300",
+        "deskripsi": "Hindari aktivitas luar ruangan. Gunakan masker jika harus keluar.",
+        "rekom_emoji": "😷",
+        "rekomendasi": "Hindari aktivitas outdoor jika tidak mendesak. Tetap berada di dalam ruangan dan gunakan masker saat harus keluar rumah."
+    },
+    "Berbahaya": {
+        "warna": "#7C3AED", "warna_bg": "#EDE9FE", "emoji": "☠️",
+        "rentang": ">301",
+        "deskripsi": "Hindari semua aktivitas luar ruangan. Tetap di dalam ruangan.",
+        "rekom_emoji": "🚨",
+        "rekomendasi": "Tetap berada di dalam ruangan dan hindari seluruh aktivitas luar. Tutup ventilasi udara dan gunakan pelindung pernapasan jika harus keluar."
     },
 }
 
@@ -113,6 +127,8 @@ REKOM_IMG = {
     "Baik":               "rekom_baik.png",
     "Sedang":             "rekom_sedang.png",
     "Tidak Sehat":        "rekom_tidak_sehat.png",
+    "Sangat Tidak Sehat": "rekom_sangat_tidak_sehat.png",
+    "Berbahaya":          "rekom_berbahaya.png",
 }
 
 # Informasi 6 polutan untuk popup
@@ -1681,6 +1697,16 @@ def ispu_emoji_svg(kategori, size=72):
             "fill": "#F59E0B",
             "mouth": '<path d="M30 68 Q50 56 70 68" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>',
             "eyes": '<line x1="30" y1="40" x2="42" y2="44" stroke="white" stroke-width="4" stroke-linecap="round"/><line x1="70" y1="40" x2="58" y2="44" stroke="white" stroke-width="4" stroke-linecap="round"/>',
+        },
+        "Sangat Tidak Sehat": {
+            "fill": "#EF4444",
+            "mouth": '<path d="M30 70 Q50 55 70 70" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>',
+            "eyes": '<path d="M30 38 L42 48 M42 38 L30 48" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M58 38 L70 48 M70 38 L58 48" stroke="white" stroke-width="4" stroke-linecap="round"/>',
+        },
+        "Berbahaya": {
+            "fill": "#7C3AED",
+            "mouth": '<path d="M30 70 Q50 55 70 70" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>',
+            "eyes": '<circle cx="36" cy="44" r="6" fill="white"/><circle cx="64" cy="44" r="6" fill="white"/><circle cx="36" cy="44" r="2" fill="#7C3AED"/><circle cx="64" cy="44" r="2" fill="#7C3AED"/>',
         },
     }
     c = cfg.get(kategori, cfg["Sedang"])
