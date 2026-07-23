@@ -3529,9 +3529,9 @@ def page_edukasi(data):
     )
 
     # ============================================================
-    # Section 1: Mengenal ISPU + 3 kategori
-    # Kartu kategori dibangun dari KATEGORI_INFO supaya isinya selalu
-    # sinkron dengan skema 3 kelas yang dipakai model dan dashboard.
+    # Section 1: Mengenal ISPU + 5 kategori
+    # FIX: pakai st.container(border=True) (FIX #3) agar judul + kartu
+    #      kategori berada DI DALAM card, bukan floating di luar.
     # ============================================================
     with st.container(border=True):
         st.markdown(
@@ -3542,29 +3542,13 @@ def page_edukasi(data):
             unsafe_allow_html=True,
         )
 
-        kat_cards = ""
-        for _nama, _info in KATEGORI_INFO.items():
-            kat_cards += (
-                "<div style='border:1px solid #E5E7EB; border-radius:16px; "
-                f"background:{_info['warna_bg']}; padding:20px; display:flex; "
-                "flex-direction:column; gap:10px;'>"
-                "<div style='display:flex; align-items:center; gap:12px;'>"
-                f"{ispu_emoji_svg(_nama, size=44)}"
-                "<div>"
-                f"<div style='font-weight:800; font-size:17px; color:{_info['warna']};'>"
-                f"{_nama}</div>"
-                "<div style='font-size:13px; font-weight:600; color:#475569;'>"
-                f"ISPU {_info['rentang']}</div>"
-                "</div></div>"
-                "<div style='font-size:14px; color:#334155; line-height:1.55;'>"
-                f"{_info['deskripsi']}</div>"
-                "</div>"
-            )
-        st.markdown(
-            "<div style='display:grid; grid-template-columns:repeat(3, 1fr); "
-            f"gap:16px; margin-bottom:6px;'>{kat_cards}</div>",
-            unsafe_allow_html=True,
-        )
+        # 5 kartu kategori ISPU = SVG desain Figma (assets/ispu_kategori.svg).
+        # Kartu ini SENGAJA menampilkan 5 pita ISPU resmi PerMenLHK 14/2020
+        # sebagai materi edukasi, terpisah dari skema 3 kelas yang dipakai
+        # model klasifikasi dan dashboard.
+        kat_svg = svg_inline("ispu_kategori.svg")
+        if kat_svg:
+            st.markdown(kat_svg, unsafe_allow_html=True)
         st.markdown("<div style='margin-top:10px;'></div>", unsafe_allow_html=True)
 
     st.markdown("<div style='margin-top:19px;'></div>", unsafe_allow_html=True)
